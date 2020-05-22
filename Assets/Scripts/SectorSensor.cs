@@ -7,13 +7,13 @@ using UnityEngine;
 public class SectorSensor : MonoBehaviour
 {
     // Number of sectors in the sensor
-    public int NumSectors = 10;
+    public int numSectors = 10;
     // Field of view containing all sectors
-    public float FOV = 180;
+    public float fov = 180;
     // Sensor Range
-    public float Range = 30;
+    public float range = 30;
     // The Tag that an object requires to be detected by this sensor
-    public string SensitiveTag = "";
+    public string sensitiveTag = "";
 
     float[] sectorSenses;
     List<GameObject>[] sectorObjs;
@@ -26,9 +26,9 @@ public class SectorSensor : MonoBehaviour
 
     private void Start()
     {
-        sectorSenses = new float[NumSectors];
-        sectorObjs = new List<GameObject>[NumSectors];
-        for (int i = 0; i < NumSectors; ++i)
+        sectorSenses = new float[numSectors];
+        sectorObjs = new List<GameObject>[numSectors];
+        for (int i = 0; i < numSectors; ++i)
         {
             sectorObjs[i] = new List<GameObject>();
         }
@@ -37,7 +37,7 @@ public class SectorSensor : MonoBehaviour
     // Clears the current list of objects detected in each sector
     private void ClearSectorObjects()
     {
-        for (int i = 0; i < NumSectors; ++i)
+        for (int i = 0; i < numSectors; ++i)
         {
             sectorObjs[i].Clear();
         }
@@ -49,8 +49,8 @@ public class SectorSensor : MonoBehaviour
     // so we can check if something is outside of the sensors field of view.
     private int PosToSectorIdx(Vector3 position)
     {
-        float fovStart = -FOV / 2;
-        float sectorAngleDelta = FOV / NumSectors;
+        float fovStart = -fov / 2;
+        float sectorAngleDelta = fov / numSectors;
 
         Vector3 relPosition = transform.InverseTransformPoint(position);
         float angleFromForward = Mathf.Atan2(relPosition.z, relPosition.x) * Mathf.Rad2Deg - 90;
@@ -64,7 +64,7 @@ public class SectorSensor : MonoBehaviour
     // Useful to apply to results of PosToSectorIdx to check position is inside sensor FOV.
     private bool IsValidSectorIdx(int idx)
     {
-        return (idx >= 0 && idx < NumSectors);
+        return (idx >= 0 && idx < numSectors);
     }
 
     private void FixedUpdate()
@@ -72,10 +72,10 @@ public class SectorSensor : MonoBehaviour
         // Get objects in each sector that are the type of object this sensor is
         // sensitive to.
         ClearSectorObjects();
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, Range);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
         foreach (Collider collider in hitColliders)
         {
-            if (collider.tag == SensitiveTag && collider.gameObject != gameObject)
+            if (collider.tag == sensitiveTag && collider.gameObject != gameObject)
             {
                 int sectorIdx = PosToSectorIdx(collider.transform.position);
                 if (IsValidSectorIdx(sectorIdx)) // FOV check
@@ -102,7 +102,7 @@ public class SectorSensor : MonoBehaviour
         }
 
         // Set sector senses to the distance to the first visible object
-        for (int sectorIdx = 0; sectorIdx < NumSectors; ++sectorIdx)
+        for (int sectorIdx = 0; sectorIdx < numSectors; ++sectorIdx)
         {
             // Loop over objects in sector from near to far
             GameObject firstVisble = null;
@@ -126,7 +126,7 @@ public class SectorSensor : MonoBehaviour
             {
                 Vector3 vectorToFirstVisible = (firstVisble.transform.position - transform.position);
                 float distance = vectorToFirstVisible.magnitude;
-                sectorSenses[sectorIdx] = 1 - distance / Range;
+                sectorSenses[sectorIdx] = 1 - distance / range;
                 Color debugColor = Color.Lerp(Color.white, Color.red, sectorSenses[sectorIdx]);
                 Debug.DrawLine(transform.position, firstVisble.transform.position, debugColor);
             }

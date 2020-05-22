@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public float moveSpeed = 16f;
+    public float swimSpeed = 2f;
     public float acceleration = 5f;
     public float turnSpeed = 10f;
     public float slideRatioMin = 0.2f;
@@ -12,14 +13,48 @@ public class MovementController : MonoBehaviour
     private Rigidbody rb;
     private InputController input;
 
-    private void Awake()
+    private List<Water> overlappedWaterTiles;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Water")
+        {
+            overlappedWaterTiles.Add(other.GetComponent<Water>());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Water")
+            overlappedWaterTiles.Remove(other.gameObject.GetComponent<Water>());
+    }
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         input = GetComponent<InputController>();
+        overlappedWaterTiles = new List<Water>();
     }
 
     private void FixedUpdate()
     {
+        // Update overlapping water tiles list in case any have been used up and destroyed
+        for (int i = 0; i < overlappedWaterTiles.Count; ++i)
+        {
+            if (overlappedWaterTiles[i] == null)
+            {
+                overlappedWaterTiles.RemoveAt(i);
+                --i;
+            }
+        }
+
+        // Apply water tile movement modifier
+        float speed;
+        if (overlappedWaterTiles.Count > 0)
+            speed = swimSpeed;
+        else
+            speed = moveSpeed;
+
+        // Get input
         if (input == null)
             input = GetComponent<InputController>();
 
@@ -36,10 +71,11 @@ public class MovementController : MonoBehaviour
             yInput = input.GetYInput();
         }
 
-        Vector3 targetForwardVelocity = transform.forward * moveSpeed * yInput;
+        // Calculate forces
+        Vector3 targetForwardVelocity = transform.forward * speed * yInput;
         Vector3 forwardVelocity = Vector3.Project(rb.velocity, transform.forward);
         // Multiply by 2 so that AVERAGE acceleration (when going from 0 to full speed) is equal to user specified acceleration.
-        Vector3 forwardAcceleration = (targetForwardVelocity - forwardVelocity) / moveSpeed * 2 * acceleration;
+        Vector3 forwardAcceleration = (targetForwardVelocity - forwardVelocity) / speed * 2 * acceleration;
 
         rb.AddForceAtPosition(forwardAcceleration, transform.position, ForceMode.Acceleration);
 

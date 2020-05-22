@@ -11,7 +11,7 @@ public class EvoAIController : UnitController, InputController
     bool isRunning;
     float xInput;
     float yInput;
-    HealthController health;
+    AttributesController attributes;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class EvoAIController : UnitController, InputController
 
     public override float GetFitness()
     {
-        return health.health;
+        return attributes.AccumEnergy + attributes.AccumHydration;
     }
 
     public float GetXInput()
