@@ -10,11 +10,11 @@ using System.IO;
 
 public class Optimizer : MonoBehaviour {
 
-    public int NumInputs = 5;
     public int NumOutputs = 2;
     public float timeScale = 20;
     public int populationSize = 50;
     public int speciesCount = 10;
+    private int numInputs;
 
     public int Trials;
     public float TrialDuration;
@@ -49,7 +49,28 @@ public class Optimizer : MonoBehaviour {
         xmlConfig.LoadXml(textAsset.text);
         experiment.SetOptimizer(this);
 
-        experiment.Initialize("Car Experiment", xmlConfig.DocumentElement, NumInputs, NumOutputs);
+        numInputs = 0;
+        AttributesController unitAttrs = Unit.GetComponent<AttributesController>();
+        SectorSensor[] sectorSensors = Unit.GetComponents<SectorSensor>();
+        MovementController movement = Unit.GetComponent<MovementController>();
+        if (unitAttrs != null)
+        {
+            numInputs += unitAttrs.needsFood ? 1 : 0;
+            numInputs += unitAttrs.needsWater ? 1 : 0;
+        }
+        if (movement != null)
+        {
+            numInputs += movement.senseSpeed ? 1 : 0;
+        }
+        if (sectorSensors.Length > 0)
+        {
+            foreach (SectorSensor sectorSensor in sectorSensors)
+            {
+                numInputs += sectorSensor.senseAngles ? sectorSensor.numSectors * 2 : sectorSensor.numSectors;
+            }
+        }
+
+        experiment.Initialize("Car Experiment", xmlConfig.DocumentElement, numInputs, NumOutputs);
 
         champFileSavePath = Application.persistentDataPath + string.Format("/{0}.champ.xml", SaveFileName);
         popFileSavePath = Application.persistentDataPath + string.Format("/{0}.pop.xml", SaveFileName);       

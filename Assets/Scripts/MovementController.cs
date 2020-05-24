@@ -10,6 +10,7 @@ public class MovementController : MonoBehaviour
     public float turnSpeed = 10f;
     public float slideRatioMin = 0.2f;
     public float slideRatioMax = 1f;
+    public bool senseSpeed = true;
     private Rigidbody rb;
     private InputController input;
 

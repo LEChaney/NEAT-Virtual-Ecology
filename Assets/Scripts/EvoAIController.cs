@@ -16,11 +16,15 @@ public class EvoAIController : UnitController, InputController
     float yInput;
     AttributesController attributes;
     SectorSensor[] sectorSensors;
+    MovementController movementController;
+    Rigidbody rb;
 
     void Start()
     {
         attributes = GetComponent<AttributesController>();
         sectorSensors = GetComponents<SectorSensor>();
+        movementController = GetComponent<MovementController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -50,6 +54,12 @@ public class EvoAIController : UnitController, InputController
             {
                 // Response high at low hydration
                 inputArr[i] = 1 - attributes.Hydration / attributes.maxHydration;
+                ++i;
+            }
+
+            if (movementController.senseSpeed)
+            {
+                inputArr[i] = rb.velocity.magnitude / movementController.moveSpeed;
                 ++i;
             }
 
