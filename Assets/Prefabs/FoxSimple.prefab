@@ -168,7 +168,7 @@ MonoBehaviour:
   range: 100
   sensitiveTag: Prey
   updateInterval: 0.1
-  displayDebug: 1
+  displayDebug: 0
   senseAngles: 1
 --- !u!114 &4200140826069889955
 MonoBehaviour:
