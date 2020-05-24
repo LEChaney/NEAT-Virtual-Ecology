@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4205943075977578386}
   - component: {fileID: 4205943075977578387}
   - component: {fileID: 5947057732765283274}
+  - component: {fileID: 2048596547}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Prey
@@ -126,10 +127,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 16.666
+  swimSpeed: 2
   acceleration: 8
   turnSpeed: 5
   slideRatioMin: 0.2
   slideRatioMax: 1
+  senseSpeed: 1
 --- !u!114 &4205943075977578387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,11 +157,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03bb740029009f4cb07847980b86102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needsFood: 1
+  needsWater: 1
   maxEnergy: 100
   maxHydration: 100
   energyBaseTickDownRate: 0.1
   hydrationBaseTickDownRate: 0.7
   energyMovementTickDownModifier: 10
   hydrationMovementTickDownModifier: 10
+  drinkRate: 10
+  foodTag: 
+  foodValue: 10
+  showAttributeBars: 1
   attributeBarsPrefab: {fileID: 5724938709217467783, guid: d4808c875a27dd14cb3ca044487616cb,
     type: 3}
+--- !u!114 &2048596547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205943075977578395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSectors: 10
+  fov: 360
+  range: 30
+  sensitiveTag: Predator
+  updateInterval: 0.1
+  displayDebug: 1
+  senseAngles: 1

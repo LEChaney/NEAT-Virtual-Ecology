@@ -70,6 +70,8 @@ public class SectorSensor : MonoBehaviour
 
         Vector3 relPosition = transform.InverseTransformPoint(position);
         float angleFromForward = Mathf.Atan2(relPosition.z, relPosition.x) * Mathf.Rad2Deg - 90;
+        if (angleFromForward < -180)
+            angleFromForward += 360;
         float angleFromFOVStart = angleFromForward - fovStart;
         int sectorIdx = (int)Mathf.Floor(angleFromFOVStart / sectorAngleDelta);
 

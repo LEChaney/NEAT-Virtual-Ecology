@@ -132,6 +132,7 @@ MonoBehaviour:
   turnSpeed: 5
   slideRatioMin: 0.2
   slideRatioMax: 1
+  senseSpeed: 1
 --- !u!114 &7657777608956469548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +169,7 @@ MonoBehaviour:
   sensitiveTag: Prey
   updateInterval: 0.1
   displayDebug: 1
+  senseAngles: 1
 --- !u!114 &4200140826069889955
 MonoBehaviour:
   m_ObjectHideFlags: 0

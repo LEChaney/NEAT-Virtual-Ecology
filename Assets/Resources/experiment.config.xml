@@ -8,7 +8,7 @@
         <Iters>2</Iters>
       </Activation>
       <ComplexityRegulationStrategy>Absolute</ComplexityRegulationStrategy>
-      <ComplexityThreshold>70</ComplexityThreshold>
+      <ComplexityThreshold>99999</ComplexityThreshold>
       <Description>Logical XOR. The goal is to reproduce the following logic truth table:
         In1 | In2 | Out
         -----------------

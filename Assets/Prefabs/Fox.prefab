@@ -128,10 +128,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 16.666
+  swimSpeed: 2
   acceleration: 8
   turnSpeed: 5
   slideRatioMin: 0.2
   slideRatioMax: 1
+  senseSpeed: 1
 --- !u!114 &7657777608956469548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4e9eca7d8276a49b74cf2a88b8a493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 100
+    height: 100
 --- !u!114 &6599124107262660863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,12 +164,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03bb740029009f4cb07847980b86102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needsFood: 1
+  needsWater: 1
   maxEnergy: 100
   maxHydration: 100
   energyBaseTickDownRate: 0.1
   hydrationBaseTickDownRate: 0.7
   energyMovementTickDownModifier: 10
   hydrationMovementTickDownModifier: 10
+  drinkRate: 10
+  foodTag: 
+  foodValue: 10
+  showAttributeBars: 1
   attributeBarsPrefab: {fileID: 5724938709217467783, guid: d4808c875a27dd14cb3ca044487616cb,
     type: 3}
 --- !u!114 &426878198070686737
@@ -179,7 +193,10 @@ MonoBehaviour:
   numSectors: 10
   fov: 180
   range: 30
-  sensitiveTag: 
+  sensitiveTag: Prey
+  updateInterval: 0.1
+  displayDebug: 0
+  senseAngles: 1
 --- !u!114 &4268217573284236141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,4 +212,7 @@ MonoBehaviour:
   numSectors: 10
   fov: 180
   range: 30
-  sensitiveTag: 
+  sensitiveTag: Prey
+  updateInterval: 0.1
+  displayDebug: 0
+  senseAngles: 1
