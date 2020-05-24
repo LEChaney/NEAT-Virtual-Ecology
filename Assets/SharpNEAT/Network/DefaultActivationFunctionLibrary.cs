@@ -102,18 +102,19 @@ namespace SharpNeat.Network
         /// NEAT uses the same activation function for all neurons/nodes therefore this factory method
         /// creates an IActivationFunction containing only the single provided IActivationFunction.
         /// </summary>
-        //public static IActivationFunctionLibrary CreateLibraryNeat(IActivationFunction activationFn)
+        //public static IActivationFunctionLibrary CreateLibraryNeat()
         //{
         //    List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(1);
-        //    fnList.Add(new ActivationFunctionInfo(0, 1.0, activationFn));
+        //    fnList.Add(new ActivationFunctionInfo(0, 1.0, SteepenedSigmoid.__DefaultInstance));
         //    return new DefaultActivationFunctionLibrary(fnList);
         //}
 
+        // Customized available functions
         public static IActivationFunctionLibrary CreateLibraryNeat()
         {
             int numFns = 11;
             List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(numFns);
-            fnList.Add(new ActivationFunctionInfo(0, 1.0f/ numFns, PlainSigmoid.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(0, 1.0f / numFns, PlainSigmoid.__DefaultInstance));
             fnList.Add(new ActivationFunctionInfo(1, 1.0 / numFns, Linear.__DefaultInstance));
             fnList.Add(new ActivationFunctionInfo(2, 1.0 / numFns, StepFunction.__DefaultInstance));
             fnList.Add(new ActivationFunctionInfo(3, 1.0 / numFns, Sine.__DefaultInstance));

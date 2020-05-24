@@ -12,6 +12,9 @@ public class Optimizer : MonoBehaviour {
 
     public int NumInputs = 5;
     public int NumOutputs = 2;
+    public float timeScale = 20;
+    public int populationSize = 50;
+    public int speciesCount = 10;
 
     public int Trials;
     public float TrialDuration;
@@ -72,7 +75,7 @@ public class Optimizer : MonoBehaviour {
             //   print("FPS: " + fps);
             if (fps < 10)
             {
-                Time.timeScale = Time.timeScale - 1;
+                Time.timeScale = Mathf.Max(1, Time.timeScale - 1);
                 print("Lowering time scale to " + Time.timeScale);
             }
         }
@@ -89,10 +92,8 @@ public class Optimizer : MonoBehaviour {
         _ea.UpdateEvent += new EventHandler(ea_UpdateEvent);
         _ea.PausedEvent += new EventHandler(ea_PauseEvent);
 
-        var evoSpeed = 10;
-
      //   Time.fixedDeltaTime = 0.045f;
-        Time.timeScale = evoSpeed;       
+        Time.timeScale = timeScale;       
         _ea.StartContinue();
         EARunning = true;
     }

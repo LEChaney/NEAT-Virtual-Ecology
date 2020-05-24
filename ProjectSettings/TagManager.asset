@@ -10,6 +10,7 @@ TagManager:
   - Predator
   - Prey
   - Canvas
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - 
   - Car
   - Car2
-  - 
-  - 
+  - Predator
+  - Prey
   - 
   - 
   - 

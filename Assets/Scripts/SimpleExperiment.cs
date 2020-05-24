@@ -80,8 +80,9 @@ public class SimpleExperiment : INeatExperiment
     public void Initialize(string name, XmlElement xmlConfig, int input, int output)
     {
         _name = name;
-        _populationSize = XmlUtils.GetValueAsInt(xmlConfig, "PopulationSize");
-        _specieCount = XmlUtils.GetValueAsInt(xmlConfig, "SpecieCount");
+        //_populationSize = XmlUtils.GetValueAsInt(xmlConfig, "PopulationSize");
+        _populationSize = _optimizer.populationSize;
+        _specieCount = _optimizer.speciesCount;
         _activationScheme = ExperimentUtils.CreateActivationScheme(xmlConfig, "Activation");
         _complexityRegulationStr = XmlUtils.TryGetValueAsString(xmlConfig, "ComplexityRegulationStrategy");
         _complexityThreshold = XmlUtils.TryGetValueAsInt(xmlConfig, "ComplexityThreshold");

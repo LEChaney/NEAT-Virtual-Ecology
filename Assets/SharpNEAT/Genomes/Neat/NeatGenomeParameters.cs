@@ -31,22 +31,34 @@ namespace SharpNeat.Genomes.Neat
     {
         #region Constants
 
+        //const double DefaultConnectionWeightRange = 2.0;
         const double DefaultConnectionWeightRange = 2.0;
-        const double DefaultInitialInterconnectionsProportion = 0.1;
+        const double DefaultInitialInterconnectionsProportion = 0.05;
         const double DefaultDisjointExcessGenesRecombineProbability = 0.1;
 
         // High level mutation probabilities
+        ////const double DefaultAddNodeMutationProbability = 0.001;
+        ////const double DefaultAddConnectionMutationProbability = 0.01;
+        ////const double DefaultNodeAuxStateMutationProbability = 0.00;
+        ////const double DefaultDeleteConnectionMutationProbability = 0.001;
+        ////const double DefaultConnectionWeightMutationProbability = 0.888;
+        
+        // Customized probabilities
         const double DefaultConnectionWeightMutationProbability = 0.50;
-        //const double DefaultAddNodeMutationProbability = 0.001;
-        //const double DefaultAddConnectionMutationProbability = 0.01;
-        //const double DefaultNodeAuxStateMutationProbability = 0.00;
-        //const double DefaultDeleteConnectionMutationProbability = 0.001;
-        //const double DefaultConnectionWeightMutationProbability = 0.888;
         const double DefaultAddNodeMutationProbability = 0.165;
         const double DefaultNodeFnMutationProbability = 0.165;
         const double DefaultAddConnectionMutationProbability = 0.165;
         const double DefaultNodeAuxStateMutationProbability = 0.00;
         const double DefaultDeleteConnectionMutationProbability = 0.005;
+
+        // SharpNeat defaults
+        //const double DefaultConnectionWeightMutationProbability = 0.988;
+        //const double DefaultAddNodeMutationProbability = 0.005;
+        //const double DefaultAddConnectionMutationProbability = 0.05;
+        //const double DefaultNodeAuxStateMutationProbability = 0.00;
+        //const double DefaultDeleteConnectionMutationProbability = 0.004;
+        //const double DefaultNodeFnMutationProbability = 0;
+
 
         #endregion
 
@@ -363,6 +375,7 @@ namespace SharpNeat.Genomes.Neat
 
         /// <summary>
         /// Returns the default connection weight mutation scheme.
+        /// Customized
         /// </summary>
         private ConnectionMutationInfoList CreateConnectionWeightMutationScheme_Default()
         {
@@ -378,6 +391,7 @@ namespace SharpNeat.Genomes.Neat
 
         /// <summary>
         /// Returns the default connection weight mutation scheme.
+        /// SharpNeat Defaults
         /// </summary>
         //private ConnectionMutationInfoList CreateConnectionWeightMutationScheme_Default()
         //{
