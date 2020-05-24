@@ -16,6 +16,7 @@ public class EvoAIController : UnitController, InputController
     float yInput;
     AttributesController attributes;
     SectorSensor[] sectorSensors;
+    DistanceSensor[] distanceSensors;
     MovementController movementController;
     Rigidbody rb;
 
@@ -23,6 +24,7 @@ public class EvoAIController : UnitController, InputController
     {
         attributes = GetComponent<AttributesController>();
         sectorSensors = GetComponents<SectorSensor>();
+        distanceSensors = GetComponents<DistanceSensor>();
         movementController = GetComponent<MovementController>();
         rb = GetComponent<Rigidbody>();
     }
@@ -42,7 +44,16 @@ public class EvoAIController : UnitController, InputController
                     ++i;
                 }
             }
-            
+
+            foreach (DistanceSensor distanceSensor in distanceSensors)
+            {
+                for (int j = 0; j < distanceSensor.numSensors; ++j)
+                {
+                    inputArr[i] = distanceSensor.GetSense(j);
+                    ++i;
+                }
+            }
+
             if (attributes.needsFood)
             {
                 // Response high at low energy

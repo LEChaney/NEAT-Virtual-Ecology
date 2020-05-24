@@ -52,6 +52,7 @@ public class Optimizer : MonoBehaviour {
         numInputs = 0;
         AttributesController unitAttrs = Unit.GetComponent<AttributesController>();
         SectorSensor[] sectorSensors = Unit.GetComponents<SectorSensor>();
+        DistanceSensor[] distanceSensors = Unit.GetComponents<DistanceSensor>();
         MovementController movement = Unit.GetComponent<MovementController>();
         if (unitAttrs != null)
         {
@@ -67,6 +68,13 @@ public class Optimizer : MonoBehaviour {
             foreach (SectorSensor sectorSensor in sectorSensors)
             {
                 numInputs += sectorSensor.senseAngles ? sectorSensor.numSectors * 2 : sectorSensor.numSectors;
+            }
+        }
+        if (distanceSensors.Length > 0)
+        {
+            foreach (DistanceSensor distanceSensor in distanceSensors)
+            {
+                numInputs += distanceSensor.numSensors;
             }
         }
 

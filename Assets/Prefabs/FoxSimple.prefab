@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7657777608956469548}
   - component: {fileID: 4268217573284236141}
   - component: {fileID: 4200140826069889955}
+  - component: {fileID: 2624993428507759539}
   m_Layer: 10
   m_Name: FoxSimple
   m_TagString: Predator
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numSectors: 10
+  numSectors: 3
   fov: 180
   range: 100
   sensitiveTag: Prey
@@ -196,3 +197,20 @@ MonoBehaviour:
   showAttributeBars: 1
   attributeBarsPrefab: {fileID: 5724938709217467783, guid: d4808c875a27dd14cb3ca044487616cb,
     type: 3}
+--- !u!114 &2624993428507759539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32fe0121dc923f4db9b6f45a9af1a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSensors: 5
+  fov: 180
+  range: 30
+  updateInterval: 0.06
+  displayDebug: 0
