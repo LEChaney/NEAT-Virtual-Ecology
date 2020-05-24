@@ -1,5 +1,6 @@
 Controls:
 WASD to move around
+Hold shift to move faster
 Hold right click and move mouse to rotate camera
 Spacebar to toggle between real-time and sped up time
 
