@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5947057732765283274}
   - component: {fileID: 2048596547}
   - component: {fileID: 5619141447785986600}
-  - component: {fileID: -8358478015329631007}
+  - component: {fileID: 783326445441027629}
   m_Layer: 11
   m_Name: RabbitTesting
   m_TagString: Prey
@@ -216,7 +216,7 @@ MonoBehaviour:
   blocksLineOfSight:
     serializedVersion: 2
     m_Bits: 807
---- !u!114 &-8358478015329631007
+--- !u!114 &783326445441027629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,16 +225,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4205943075977578395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
+  m_Script: {fileID: 11500000, guid: d32fe0121dc923f4db9b6f45a9af1a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numSectors: 5
+  numSensors: 10
   fov: 180
   range: 100
-  sensitiveTag: Water
-  updateInterval: 0.1
+  updateInterval: 0.06
   displayDebug: 1
-  senseAngles: 0
   blocksLineOfSight:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 16

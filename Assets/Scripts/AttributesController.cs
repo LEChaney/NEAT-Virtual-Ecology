@@ -10,14 +10,14 @@ public class AttributesController : MonoBehaviour
     public bool needsWater = true;
     public float maxEnergy = 100;
     public float maxHydration = 100;
-    public float energyBaseTickDownRate = 0.1f;
-    public float hydrationBaseTickDownRate = 0.7f;
+    public float energyBaseTickDownRate = 1;
+    public float hydrationBaseTickDownRate = 1;
     // Modifier for base tick down rate when moving
     // this modifier will be maximally applied when moving at max speed.
-    public float energyMovementTickDownModifier = 10;
+    public float energyMovementTickDownModifier = 2;
     // Modifier for base tick down rate when moving
     // this modifier will be maximally applied when moving at max speed.
-    public float hydrationMovementTickDownModifier = 10;
+    public float hydrationMovementTickDownModifier = 2;
     public float drinkRate = 10;
     public string foodTag = "";
     public float foodValue = 10;

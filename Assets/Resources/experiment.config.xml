@@ -5,7 +5,7 @@
       <SpecieCount>10</SpecieCount>
       <Activation>
         <Scheme>CyclicFixedIters</Scheme>
-        <Iters>2</Iters>
+        <Iters>1</Iters>
       </Activation>
       <ComplexityRegulationStrategy>Absolute</ComplexityRegulationStrategy>
       <ComplexityThreshold>1000</ComplexityThreshold>

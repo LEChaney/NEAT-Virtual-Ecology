@@ -120,11 +120,18 @@ public class EvoAIController : UnitController, InputController
         else
         {
             float healthyness = 0;
+            int influencerCount = 0;
             if (attributes.needsFood)
+            {
                 healthyness += attributes.AccumEnergy;
+                ++influencerCount;
+            }
             if (attributes.needsWater)
+            {
                 healthyness += attributes.AccumHydration;
-            return healthyness;
+                ++influencerCount;
+            }
+            return healthyness / influencerCount;
         }
     }
 

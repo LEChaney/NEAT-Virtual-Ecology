@@ -162,6 +162,10 @@ public class SectorSensor : MonoBehaviour
                     firstVisible = obj;
                     break;
                 }
+                else if (displayDebug)
+                {
+                    Debug.DrawLine(transform.position, obj.transform.position, Color.magenta);
+                }
             }
         }
         return firstVisible;
@@ -202,7 +206,7 @@ public class SectorSensor : MonoBehaviour
                     if (displayDebug)
                     {
                         Color debugColor = Color.Lerp(Color.white, Color.red, sectorSenses[sectorIdx]);
-                        Debug.DrawLine(transform.position, firstVisible.transform.position, debugColor, updateInterval - timeAccum);
+                        Debug.DrawLine(transform.position, firstVisible.transform.position, debugColor);
                     }
                 }
                 else

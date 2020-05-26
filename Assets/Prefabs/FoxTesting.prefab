@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 426878198070686737}
   - component: {fileID: 4268217573284236141}
   m_Layer: 10
-  m_Name: Fox
+  m_Name: FoxTesting
   m_TagString: Predator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   range: 30
   sensitiveTag: Prey
   updateInterval: 0.1
-  displayDebug: 1
+  displayDebug: 0
   senseAngles: 1
   blocksLineOfSight:
     serializedVersion: 2
