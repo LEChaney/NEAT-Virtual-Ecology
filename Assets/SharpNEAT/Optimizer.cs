@@ -49,6 +49,7 @@ public class Optimizer : MonoBehaviour {
         xmlConfig.LoadXml(textAsset.text);
         experiment.SetOptimizer(this);
 
+        // Calculate number of inputs
         numInputs = 0;
         AttributesController unitAttrs = Unit.GetComponent<AttributesController>();
         SectorSensor[] sectorSensors = Unit.GetComponents<SectorSensor>();
@@ -62,6 +63,7 @@ public class Optimizer : MonoBehaviour {
         if (movement != null)
         {
             numInputs += movement.senseSpeed ? 1 : 0;
+            numInputs += movement.senseSwimming ? 1 : 0;
         }
         if (sectorSensors.Length > 0)
         {

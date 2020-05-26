@@ -134,6 +134,7 @@ MonoBehaviour:
   slideRatioMin: 0.2
   slideRatioMax: 1
   senseSpeed: 1
+  senseSwimming: 0
 --- !u!114 &3672564163127852389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +154,9 @@ MonoBehaviour:
   updateInterval: 0.1
   displayDebug: 0
   senseAngles: 1
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 1831
 --- !u!114 &2849612364497641318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +218,6 @@ MonoBehaviour:
   range: 30
   updateInterval: 0.06
   displayDebug: 0
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 807

@@ -74,6 +74,12 @@ public class EvoAIController : UnitController, InputController
                 ++i;
             }
 
+            if (movementController.senseSwimming)
+            {
+                inputArr[i] = movementController.IsSwimming ? 1 : 0;
+                ++i;
+            }
+
             // Activate neural network
             box.Activate();
 

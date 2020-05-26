@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 5875246232863834959}
   - component: {fileID: 5875246232863834958}
   - component: {fileID: 7657777608956469548}
+  - component: {fileID: 6599124107262660863}
+  - component: {fileID: 426878198070686737}
   - component: {fileID: 4268217573284236141}
-  - component: {fileID: 4200140826069889955}
-  - component: {fileID: 8678247285722614961}
   m_Layer: 10
-  m_Name: FoxSimple
+  m_Name: Fox
   m_TagString: Predator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875246232863834952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 500, y: 0.35, z: -500}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   slideRatioMin: 0.2
   slideRatioMax: 1
   senseSpeed: 1
-  senseSwimming: 0
+  senseSwimming: 1
 --- !u!114 &7657777608956469548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +153,54 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 100
+--- !u!114 &6599124107262660863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03bb740029009f4cb07847980b86102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needsFood: 1
+  needsWater: 1
+  maxEnergy: 100
+  maxHydration: 100
+  energyBaseTickDownRate: 0.1
+  hydrationBaseTickDownRate: 0.7
+  energyMovementTickDownModifier: 10
+  hydrationMovementTickDownModifier: 10
+  drinkRate: 10
+  foodTag: 
+  foodValue: 10
+  showAttributeBars: 1
+  attributeBarsPrefab: {fileID: 5724938709217467783, guid: d4808c875a27dd14cb3ca044487616cb,
+    type: 3}
+--- !u!114 &426878198070686737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSectors: 10
+  fov: 180
+  range: 30
+  sensitiveTag: Prey
+  updateInterval: 0.1
+  displayDebug: 1
+  senseAngles: 1
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 2855
 --- !u!114 &4268217573284236141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,57 +215,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numSectors: 10
   fov: 180
-  range: 100
-  sensitiveTag: Prey
+  range: 30
+  sensitiveTag: Predator
   updateInterval: 0.1
   displayDebug: 0
   senseAngles: 1
   blocksLineOfSight:
     serializedVersion: 2
-    m_Bits: 2855
---- !u!114 &4200140826069889955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5875246232863834952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03bb740029009f4cb07847980b86102, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needsFood: 1
-  needsWater: 0
-  maxEnergy: 100
-  maxHydration: 100
-  energyBaseTickDownRate: 1
-  hydrationBaseTickDownRate: 0.7
-  energyMovementTickDownModifier: 2
-  hydrationMovementTickDownModifier: 10
-  drinkRate: 10
-  foodTag: Prey
-  foodValue: 0
-  showAttributeBars: 1
-  attributeBarsPrefab: {fileID: 5724938709217467783, guid: d4808c875a27dd14cb3ca044487616cb,
-    type: 3}
---- !u!114 &8678247285722614961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5875246232863834952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32fe0121dc923f4db9b6f45a9af1a7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numSensors: 5
-  fov: 180
-  range: 30
-  updateInterval: 0.06
-  displayDebug: 0
-  blocksLineOfSight:
-    serializedVersion: 2
-    m_Bits: 807
+    m_Bits: 1831

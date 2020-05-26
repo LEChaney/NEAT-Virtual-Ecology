@@ -11,8 +11,11 @@ public class MovementController : MonoBehaviour
     public float slideRatioMin = 0.2f;
     public float slideRatioMax = 1f;
     public bool senseSpeed = true;
+    public bool senseSwimming = true;
     private Rigidbody rb;
     private InputController input;
+
+    public bool IsSwimming { get; private set; }
 
     private List<Water> overlappedWaterTiles;
     private void OnTriggerEnter(Collider other)
@@ -51,9 +54,15 @@ public class MovementController : MonoBehaviour
         // Apply water tile movement modifier
         float speed;
         if (overlappedWaterTiles.Count > 0)
+        {
             speed = swimSpeed;
+            IsSwimming = true;
+        }
         else
+        {
             speed = moveSpeed;
+            IsSwimming = false;
+        }
 
         // Get input
         if (input == null)

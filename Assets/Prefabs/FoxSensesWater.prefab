@@ -18,8 +18,9 @@ GameObject:
   - component: {fileID: 4268217573284236141}
   - component: {fileID: 4200140826069889955}
   - component: {fileID: 8678247285722614961}
+  - component: {fileID: 3698490174600833538}
   m_Layer: 10
-  m_Name: FoxSimple
+  m_Name: FoxSensesWater
   m_TagString: Predator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +135,7 @@ MonoBehaviour:
   slideRatioMin: 0.2
   slideRatioMax: 1
   senseSpeed: 1
-  senseSwimming: 0
+  senseSwimming: 1
 --- !u!114 &7657777608956469548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +222,25 @@ MonoBehaviour:
   blocksLineOfSight:
     serializedVersion: 2
     m_Bits: 807
+--- !u!114 &3698490174600833538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSectors: 5
+  fov: 180
+  range: 100
+  sensitiveTag: Water
+  updateInterval: 0.32
+  displayDebug: 0
+  senseAngles: 0
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 823

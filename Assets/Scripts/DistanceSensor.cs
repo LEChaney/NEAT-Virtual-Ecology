@@ -18,6 +18,7 @@ public class DistanceSensor : MonoBehaviour
     // How long to wait between updating the sensors (1 / sensorFrequency)
     public float updateInterval = 0.06f;
     public bool displayDebug = false;
+    public LayerMask blocksLineOfSight = ~0;
 
     private float timeAccum;
     private float fovStart;
@@ -58,7 +59,7 @@ public class DistanceSensor : MonoBehaviour
                 float angle = (fovStart + deltaAngle * i) * Mathf.Deg2Rad;
                 Vector3 direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 direction = transform.TransformDirection(direction);
-                raycastCommands[i] = new RaycastCommand(transform.position, direction, range);
+                raycastCommands[i] = new RaycastCommand(transform.position, direction, range, blocksLineOfSight);
             }
 
             // Perform raycasts

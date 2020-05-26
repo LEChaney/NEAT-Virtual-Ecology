@@ -22,6 +22,7 @@ public class SectorSensor : MonoBehaviour
     public float updateInterval = 0.1f;
     public bool displayDebug = false;
     public bool senseAngles = true;
+    public LayerMask blocksLineOfSight = ~0;
 
     // Double the number of sectors if angle sensing is on
     public int NumSenses { get; private set; }
@@ -154,7 +155,7 @@ public class SectorSensor : MonoBehaviour
             // Return first visible
             RaycastHit hitInfo;
             Vector3 rayDir = obj.transform.position - transform.position;
-            if (Physics.Raycast(transform.position, rayDir, out hitInfo))
+            if (Physics.Raycast(transform.position, rayDir, out hitInfo, range, blocksLineOfSight))
             {
                 if (hitInfo.transform == obj.transform)
                 {
