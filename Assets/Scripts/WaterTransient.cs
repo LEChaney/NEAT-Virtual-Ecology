@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Water : MonoBehaviour
+public class WaterTransient : Water
 {
-    public float startQuantity = 100;
-    public float refillRate = 1;
-    protected float quantity;
-    protected float startAlpha;
-    Renderer renderer;
+    private float zMin = -8;
+    private float zMax = 106;
+
+    private float xMin = -17;
+    private float xMax = 96;
+
+    public static float WaterSpawnQuantity = 10;
 
     private void Start()
     {
-        quantity = startQuantity;
-        renderer = GetComponent<Renderer>();
-        startAlpha = renderer.material.color.a;
+
+        quantity = 0;
     }
 
     public void FixedUpdate()
     {
-        if (quantity < startQuantity)
-            Quantity += refillRate * Time.deltaTime;
+        if (quantity <= 0)
+        {
+            transform.position = new Vector3(Random.Range(xMin, xMax), transform.position.y, Random.Range(zMin, zMax));
+            Quantity = WaterSpawnQuantity;
+        }
     }
 
     public float Quantity
@@ -35,7 +39,7 @@ public class Water : MonoBehaviour
             quantity = value;
 
             if (quantity < 0)
-                quantity = 0;   
+                quantity = 0;
         }
     }
 

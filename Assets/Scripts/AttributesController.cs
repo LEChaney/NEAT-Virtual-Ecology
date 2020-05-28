@@ -90,8 +90,8 @@ public class AttributesController : MonoBehaviour
         // Tick up attributes by collecting resources if available
         if (overlappedWaterTiles.Count > 0)
         {
-            //Hydration += overlappedWaterTiles[0].Take(drinkRate * Time.fixedDeltaTime);
-            Hydration += drinkRate * Time.fixedDeltaTime;
+            Hydration += overlappedWaterTiles[0].Take(drinkRate * Time.fixedDeltaTime);
+            
             Hydration = Mathf.Clamp(Hydration, 0, maxHydration);
         }
 
