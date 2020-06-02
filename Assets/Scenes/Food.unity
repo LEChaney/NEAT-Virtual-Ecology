@@ -3423,7 +3423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumOutputs: 2
-  timeScale: 20
+  timeScale: 4
   populationSize: 30
   speciesCount: 5
   Trials: 2
@@ -3476,7 +3476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumOutputs: 2
-  timeScale: 20
+  timeScale: 8
   populationSize: 50
   speciesCount: 10
   Trials: 2

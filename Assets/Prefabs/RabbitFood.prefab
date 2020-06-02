@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6400364005712328448}
   - component: {fileID: 7483211196682681779}
   - component: {fileID: 5199730856784219224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RabbitFood
   m_TagString: RabbitFood
   m_Icon: {fileID: 0}

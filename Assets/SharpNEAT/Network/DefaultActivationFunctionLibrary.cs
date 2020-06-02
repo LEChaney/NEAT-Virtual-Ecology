@@ -103,36 +103,36 @@ namespace SharpNeat.Network
         /// creates an IActivationFunction containing only the single provided IActivationFunction.
         /// SharpNEAT Defaults
         /// </summary>
-        public static IActivationFunctionLibrary CreateLibraryNeat()
-        {
-            List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(1);
-            fnList.Add(new ActivationFunctionInfo(0, 1.0, SteepenedSigmoid.__DefaultInstance));
-            return new DefaultActivationFunctionLibrary(fnList);
-        }
-
-        // Customized available functions
         //public static IActivationFunctionLibrary CreateLibraryNeat()
         //{
-        //    int numFns = 11;
-        //    List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(numFns);
-        //    fnList.Add(new ActivationFunctionInfo(0, 1.0f / numFns, PlainSigmoid.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(1, 1.0 / numFns, Linear.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(2, 1.0 / numFns, StepFunction.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(3, 1.0 / numFns, Sine.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(4, 1.0 / numFns, Gaussian.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(5, 1.0 / numFns, TanH.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(6, 1.0 / numFns, Negate.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(7, 1.0 / numFns, Absolute.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(8, 1.0 / numFns, ReLU.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(9, 1.0 / numFns, Cosine.__DefaultInstance));
-        //    fnList.Add(new ActivationFunctionInfo(10, 1.0 / numFns, Squared.__DefaultInstance));
+        //    List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(1);
+        //    fnList.Add(new ActivationFunctionInfo(0, 1.0, SteepenedSigmoid.__DefaultInstance));
         //    return new DefaultActivationFunctionLibrary(fnList);
         //}
 
-    /// <summary>
-    /// Create an IActivationFunctionLibrary for use with CPPNs.
-    /// </summary>
-    public static IActivationFunctionLibrary CreateLibraryCppn()
+        // Customized available functions
+        public static IActivationFunctionLibrary CreateLibraryNeat()
+        {
+            int numFns = 11;
+            List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(numFns);
+            fnList.Add(new ActivationFunctionInfo(0, 1.0f / numFns, PlainSigmoid.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(1, 1.0 / numFns, Linear.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(2, 1.0 / numFns, StepFunction.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(3, 1.0 / numFns, Sine.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(4, 1.0 / numFns, Gaussian.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(5, 1.0 / numFns, TanH.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(6, 1.0 / numFns, Negate.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(7, 1.0 / numFns, Absolute.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(8, 1.0 / numFns, ReLU.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(9, 1.0 / numFns, Cosine.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(10, 1.0 / numFns, Squared.__DefaultInstance));
+            return new DefaultActivationFunctionLibrary(fnList);
+        }
+
+        /// <summary>
+        /// Create an IActivationFunctionLibrary for use with CPPNs.
+        /// </summary>
+        public static IActivationFunctionLibrary CreateLibraryCppn()
         {
             List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(4);
             fnList.Add(new ActivationFunctionInfo(0, 0.25, Linear.__DefaultInstance));

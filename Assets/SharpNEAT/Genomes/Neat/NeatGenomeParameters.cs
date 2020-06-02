@@ -33,10 +33,10 @@ namespace SharpNeat.Genomes.Neat
 
         // SharpNEAT defaults
         const double DefaultConnectionWeightRange = 5.0;
-
-        //const double DefaultConnectionWeightRange = 2.0;
         const double DefaultInitialInterconnectionsProportion = 0.05;
         const double DefaultDisjointExcessGenesRecombineProbability = 0.1;
+
+        //const double DefaultConnectionWeightRange = 2.0;
 
         // High level mutation probabilities
         ////const double DefaultAddNodeMutationProbability = 0.001;
@@ -46,20 +46,20 @@ namespace SharpNeat.Genomes.Neat
         ////const double DefaultConnectionWeightMutationProbability = 0.888;
 
         // Customized probabilities
-        //const double DefaultConnectionWeightMutationProbability = 0.50;
-        //const double DefaultAddNodeMutationProbability = 0.165;
-        //const double DefaultNodeFnMutationProbability = 0.165;
-        //const double DefaultAddConnectionMutationProbability = 0.165;
-        //const double DefaultNodeAuxStateMutationProbability = 0.00;
-        //const double DefaultDeleteConnectionMutationProbability = 0.005;
+        const double DefaultConnectionWeightMutationProbability = 0.50;
+        const double DefaultAddNodeMutationProbability = 0.165;
+        const double DefaultNodeFnMutationProbability = 0.165;
+        const double DefaultAddConnectionMutationProbability = 0.165;
+        const double DefaultNodeAuxStateMutationProbability = 0.00;
+        const double DefaultDeleteConnectionMutationProbability = 0.005;
 
         // SharpNeat defaults
-        const double DefaultConnectionWeightMutationProbability = 0.988;
-        const double DefaultAddNodeMutationProbability = 0.005;
-        const double DefaultAddConnectionMutationProbability = 0.05;
-        const double DefaultNodeAuxStateMutationProbability = 0.00;
-        const double DefaultDeleteConnectionMutationProbability = 0.004;
-        const double DefaultNodeFnMutationProbability = 0;
+        //const double DefaultConnectionWeightMutationProbability = 0.988;
+        //const double DefaultAddNodeMutationProbability = 0.005;
+        //const double DefaultAddConnectionMutationProbability = 0.05;
+        //const double DefaultNodeAuxStateMutationProbability = 0.00;
+        //const double DefaultDeleteConnectionMutationProbability = 0.004;
+        //const double DefaultNodeFnMutationProbability = 0;
 
 
         #endregion
@@ -379,72 +379,72 @@ namespace SharpNeat.Genomes.Neat
         /// Returns the default connection weight mutation scheme.
         /// Customized
         /// </summary>
-        //private ConnectionMutationInfoList CreateConnectionWeightMutationScheme_Default()
-        //{
-        //    ConnectionMutationInfoList list = new ConnectionMutationInfoList(2);
+        private ConnectionMutationInfoList CreateConnectionWeightMutationScheme_Default()
+        {
+            ConnectionMutationInfoList list = new ConnectionMutationInfoList(2);
 
-        //    // Jiggle 80% of connections.
-        //    list.Add(new ConnectionMutationInfo(1, ConnectionPerturbanceType.JiggleGaussian,
-        //                                        ConnectionSelectionType.Proportional, 0.8, 0, 0.0, _connectionWeightRange * 0.2));
+            // Jiggle 80% of connections.
+            list.Add(new ConnectionMutationInfo(1, ConnectionPerturbanceType.JiggleGaussian,
+                                                ConnectionSelectionType.Proportional, 0.8, 0, 0.0, _connectionWeightRange * 0.2));
 
-        //    list.Initialize();
-        //    return list;
-        //}
+            list.Initialize();
+            return list;
+        }
 
         /// <summary>
         /// Returns the default connection weight mutation scheme.
         /// SharpNeat Defaults
         /// </summary>
-        private ConnectionMutationInfoList CreateConnectionWeightMutationScheme_Default()
-        {
-            ConnectionMutationInfoList list = new ConnectionMutationInfoList(12);
+        //private ConnectionMutationInfoList CreateConnectionWeightMutationScheme_Default()
+        //{
+        //    ConnectionMutationInfoList list = new ConnectionMutationInfoList(12);
 
-            // Gaussian jiggle with sigma=0.02 (most values between +-0.04)
-            // Jiggle 1,2 and 3 connections respectively.
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 1, 0.0, 0.02));
+        //    // Gaussian jiggle with sigma=0.02 (most values between +-0.04)
+        //    // Jiggle 1,2 and 3 connections respectively.
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 1, 0.0, 0.02));
 
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 2, 0.0, 0.02));
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 2, 0.0, 0.02));
 
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 3, 0.0, 0.02));
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 3, 0.0, 0.02));
 
-            // Jiggle 2% of connections.
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.Proportional, 0.02, 0, 0.0, 0.02));
+        //    // Jiggle 2% of connections.
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.Proportional, 0.02, 0, 0.0, 0.02));
 
-            // Gaussian jiggle with sigma=1 (most values between +-2)
-            // Jiggle 1,2 and 3 connections respectively.
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 1, 0.0, 1));
+        //    // Gaussian jiggle with sigma=1 (most values between +-2)
+        //    // Jiggle 1,2 and 3 connections respectively.
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 1, 0.0, 1));
 
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 2, 0.0, 1));
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 2, 0.0, 1));
 
-            list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 3, 0.0, 1));
+        //    list.Add(new ConnectionMutationInfo(0.11375, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 3, 0.0, 1));
 
-            // Jiggle 2% of connections.
-            list.Add(new ConnectionMutationInfo(0.11275, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.Proportional, 0.02, 0, 0.0, 1));
+        //    // Jiggle 2% of connections.
+        //    list.Add(new ConnectionMutationInfo(0.11275, ConnectionPerturbanceType.JiggleGaussian,
+        //                                        ConnectionSelectionType.Proportional, 0.02, 0, 0.0, 1));
 
-            // Reset mutations. 1, 2 and 3 connections respectively.
-            list.Add(new ConnectionMutationInfo(0.03, ConnectionPerturbanceType.Reset,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 1, 0.0, 0));
+        //    // Reset mutations. 1, 2 and 3 connections respectively.
+        //    list.Add(new ConnectionMutationInfo(0.03, ConnectionPerturbanceType.Reset,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 1, 0.0, 0));
 
-            list.Add(new ConnectionMutationInfo(0.03, ConnectionPerturbanceType.Reset,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 2, 0.0, 0));
+        //    list.Add(new ConnectionMutationInfo(0.03, ConnectionPerturbanceType.Reset,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 2, 0.0, 0));
 
-            list.Add(new ConnectionMutationInfo(0.03, ConnectionPerturbanceType.Reset,
-                                                ConnectionSelectionType.FixedQuantity, 0.0, 3, 0.0, 0));
+        //    list.Add(new ConnectionMutationInfo(0.03, ConnectionPerturbanceType.Reset,
+        //                                        ConnectionSelectionType.FixedQuantity, 0.0, 3, 0.0, 0));
 
-            // Reset 2% of connections.
-            list.Add(new ConnectionMutationInfo(0.001, ConnectionPerturbanceType.Reset,
-                                                ConnectionSelectionType.Proportional, 0.02, 0, 0.0, 0));
-            list.Initialize();
-            return list;
-        }
+        //    // Reset 2% of connections.
+        //    list.Add(new ConnectionMutationInfo(0.001, ConnectionPerturbanceType.Reset,
+        //                                        ConnectionSelectionType.Proportional, 0.02, 0, 0.0, 0));
+        //    list.Initialize();
+        //    return list;
+        //}
 
         /// <summary>
         /// Returns the connection weight mutation scheme from SharpNEAT version 1.x
