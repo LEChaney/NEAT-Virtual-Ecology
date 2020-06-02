@@ -3423,7 +3423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumOutputs: 2
-  timeScale: 4
+  timeScale: 8
   populationSize: 30
   speciesCount: 5
   Trials: 2
