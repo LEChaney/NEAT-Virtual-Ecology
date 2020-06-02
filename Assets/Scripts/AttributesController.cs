@@ -125,9 +125,12 @@ public class AttributesController : MonoBehaviour
         }
 
         // Update accumlation stats to use for fitness
-        TimeAlive += Time.fixedDeltaTime;
-        AccumEnergy += Energy / maxEnergy * Time.fixedDeltaTime; // Normalized
-        AccumHydration += Hydration / maxHydration * Time.fixedDeltaTime; // Normalized
+        if (Alive)
+        {
+            TimeAlive += Time.fixedDeltaTime;
+            AccumEnergy += Energy / maxEnergy * Time.fixedDeltaTime; // Normalized
+            AccumHydration += Hydration / maxHydration * Time.fixedDeltaTime; // Normalized
+        }
 
         // Death on running out of resources
         if (Energy <= 0 || Hydration <= 0)
@@ -139,10 +142,24 @@ public class AttributesController : MonoBehaviour
     public void Kill()
     {
         Alive = false;
-        gameObject.SetActive(false);
-        if (attributeBars != null)
+        
+        var evoAIController = GetComponent<EvoAIController>();
+        if (evoAIController)
         {
-            Destroy(attributeBars.gameObject);
+            // Restore attributes and randomize position
+            // Fitness attributes will no longer be modified
+            // after this point.
+            Energy = maxEnergy;
+            Hydration = maxHydration;
+            evoAIController.RandomizePosition();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            if (attributeBars != null)
+            {
+                Destroy(attributeBars.gameObject);
+            }
         }
     }
 

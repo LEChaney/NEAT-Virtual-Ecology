@@ -99,11 +99,28 @@ public class EvoAIController : UnitController, InputController
         xInput = 0;
         yInput = 0;
 
-        // Activate / spawn at random location
-        float x = Random.Range(spawnRect.xMin, spawnRect.xMax);
-        float z = Random.Range(spawnRect.yMin, spawnRect.yMax);
-        float y = transform.position.y;
-        transform.position = new Vector3(x, y, z);
+        RandomizePosition();
+    }
+
+    public void RandomizePosition()
+    {
+        // Don't teleport ontop of other objects
+        Vector3 extents = GetComponent<Renderer>().bounds.extents;
+        float y = extents.y + 5e-3f;
+        Vector3 newPos = new Vector3(0, y, 0);
+        for (int i = 0; i < 100; ++i)
+        {
+            
+            float x = Random.Range(spawnRect.xMin, spawnRect.xMax);
+            float z = Random.Range(spawnRect.yMin, spawnRect.yMax);
+            newPos = new Vector3(x, y, z);
+            Collider[] overlaps = Physics.OverlapBox(newPos, extents);
+            if (overlaps.Length == 0)
+                break;
+        }
+
+        // Move object
+        transform.position = newPos;
     }
 
     public override void Stop()

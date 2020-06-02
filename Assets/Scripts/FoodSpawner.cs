@@ -19,13 +19,13 @@ public class FoodSpawner : MonoBehaviour
     public void SpawnFood()
     {
         // Avoid spawning ontop of other objects
-        Vector3 foodPos;
-        while (true)
+        Vector3 foodExtents = food.GetComponent<Renderer>().bounds.extents;
+        float y = foodExtents.y + 5e-3f;
+        Vector3 foodPos = new Vector3(0, y, 0);
+        for (int i = 0; i < 100; ++i)
         {
-            Vector3 foodExtents = food.GetComponent<Renderer>().bounds.extents;
             float x = Random.Range(spawnRect.xMin, spawnRect.xMax);
             float z = Random.Range(spawnRect.yMin, spawnRect.yMax);
-            float y = foodExtents.z + 1e-3f;
             foodPos = new Vector3(x, y, z);
             Collider[] overlaps = Physics.OverlapBox(foodPos, foodExtents);
             if (overlaps.Length == 0)
