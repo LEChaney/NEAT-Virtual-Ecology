@@ -21,7 +21,7 @@ public class SectorSensor : MonoBehaviour
     // How long to wait between updating the sensors (1 / sensorFrequency)
     public float updateInterval = 0.1f;
     public bool displayDebug = false;
-    public bool senseAngles = true;
+    //public bool senseAngles = true;
     public LayerMask blocksLineOfSight = ~0;
 
     // Double the number of sectors if angle sensing is on
