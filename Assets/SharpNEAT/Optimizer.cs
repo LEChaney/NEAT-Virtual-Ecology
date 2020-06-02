@@ -69,7 +69,8 @@ public class Optimizer : MonoBehaviour {
         {
             foreach (SectorSensor sectorSensor in sectorSensors)
             {
-                numInputs += sectorSensor.senseAngles ? sectorSensor.numSectors * 2 : sectorSensor.numSectors;
+                //numInputs += sectorSensor.senseAngles ? sectorSensor.numSectors * 2 : sectorSensor.numSectors;
+                numInputs += sectorSensor.NumSenses;
             }
         }
         if (distanceSensors.Length > 0)

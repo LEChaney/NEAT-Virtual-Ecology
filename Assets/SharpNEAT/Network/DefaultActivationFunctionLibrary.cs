@@ -115,7 +115,7 @@ namespace SharpNeat.Network
         {
             int numFns = 11;
             List<ActivationFunctionInfo> fnList = new List<ActivationFunctionInfo>(numFns);
-            fnList.Add(new ActivationFunctionInfo(0, 1.0f / numFns, PlainSigmoid.__DefaultInstance));
+            fnList.Add(new ActivationFunctionInfo(0, 1.0f / numFns, SteepenedSigmoid.__DefaultInstance));
             fnList.Add(new ActivationFunctionInfo(1, 1.0 / numFns, Linear.__DefaultInstance));
             fnList.Add(new ActivationFunctionInfo(2, 1.0 / numFns, StepFunction.__DefaultInstance));
             fnList.Add(new ActivationFunctionInfo(3, 1.0 / numFns, Sine.__DefaultInstance));

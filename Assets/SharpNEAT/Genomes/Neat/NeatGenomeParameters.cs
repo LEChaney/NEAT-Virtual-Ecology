@@ -49,6 +49,7 @@ namespace SharpNeat.Genomes.Neat
         const double DefaultConnectionWeightMutationProbability = 0.50;
         const double DefaultAddNodeMutationProbability = 0.165;
         const double DefaultNodeFnMutationProbability = 0.165;
+        //const double DefaultNodeFnMutationProbability = 0.0;
         const double DefaultAddConnectionMutationProbability = 0.165;
         const double DefaultNodeAuxStateMutationProbability = 0.00;
         const double DefaultDeleteConnectionMutationProbability = 0.005;
@@ -385,7 +386,7 @@ namespace SharpNeat.Genomes.Neat
 
             // Jiggle 80% of connections.
             list.Add(new ConnectionMutationInfo(1, ConnectionPerturbanceType.JiggleGaussian,
-                                                ConnectionSelectionType.Proportional, 0.8, 0, 0.0, _connectionWeightRange * 0.2));
+                                                ConnectionSelectionType.Proportional, 0.8, 0, 0.0, _connectionWeightRange * 0.1));
 
             list.Initialize();
             return list;

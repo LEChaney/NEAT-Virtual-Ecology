@@ -25,7 +25,21 @@ public class SectorSensor : MonoBehaviour
     public LayerMask blocksLineOfSight = ~0;
 
     // Double the number of sectors if angle sensing is on
-    public int NumSenses { get; private set; }
+    public int NumSenses 
+    { 
+        get
+        {
+            return numSectors * 3;
+        }
+    }
+
+    public int SensesPerSector
+    {
+        get
+        {
+            return NumSenses / numSectors;
+        }
+    }
 
     private  float timeAccum;
 
@@ -40,10 +54,6 @@ public class SectorSensor : MonoBehaviour
 
     private void Start()
     {
-        if (senseAngles)
-            NumSenses = numSectors * 2;
-        else
-            NumSenses = numSectors;
         sectorSenses = new float[NumSenses];
         sectorObjs = new List<GameObject>[numSectors];
         for (int i = 0; i < numSectors; ++i)
@@ -191,31 +201,50 @@ public class SectorSensor : MonoBehaviour
                 {
                     // Distance sense for nearest in sector
                     Vector3 vectorToFirstVisible = (firstVisible.transform.position - transform.position);
-                    float distance = vectorToFirstVisible.magnitude;
-                    sectorSenses[sectorIdx] = 1 - distance / range;
+                    //float distance = vectorToFirstVisible.magnitude;
+                    //sectorSenses[sectorIdx] = 1 - distance / range;
+
+                    Vector3 relDisplacement = transform.InverseTransformDirection(vectorToFirstVisible);
+                    Vector3 senseVector = relDisplacement.normalized - relDisplacement / range;
+                    sectorSenses[sectorIdx * SensesPerSector + 0] = senseVector.x;
+                    sectorSenses[sectorIdx * SensesPerSector + 1] = senseVector.y;
+                    sectorSenses[sectorIdx * SensesPerSector + 2] = senseVector.z;
 
                     // Angle sense for nearest in sector
-                    if (senseAngles)
-                    {
-                        Vector3 dirToFirstVisible = vectorToFirstVisible / distance;
-                        float angleSense = Vector3.Dot(dirToFirstVisible, transform.right);
-                        sectorSenses[numSectors + sectorIdx] = angleSense;
-                    }
+                    //if (senseAngles)
+                    //{
+                    //    Vector3 dirToFirstVisible = vectorToFirstVisible / distance;
+                    //    float angleSense = Vector3.Dot(dirToFirstVisible, transform.right);
+                    //    sectorSenses[numSectors + sectorIdx] = angleSense;
+                    //}
+
+                    // Visualize sensor registration
+                    //if (displayDebug)
+                    //{
+                    //    Color debugColor = Color.Lerp(Color.white, Color.red, sectorSenses[sectorIdx]);
+                    //    Debug.DrawLine(transform.position, firstVisible.transform.position, debugColor);
+                    //}
 
                     // Visualize sensor registration
                     if (displayDebug)
                     {
-                        Color debugColor = Color.Lerp(Color.white, Color.red, sectorSenses[sectorIdx]);
+                        float debugColorR = Mathf.Lerp(0, 1, sectorSenses[sectorIdx * SensesPerSector + 0]);
+                        float debugColorG = Mathf.Lerp(0, 1, sectorSenses[sectorIdx * SensesPerSector + 1]);
+                        float debugColorB = Mathf.Lerp(0, 1, sectorSenses[sectorIdx * SensesPerSector + 2]);
+                        Color debugColor = new Color(debugColorR, debugColorG, debugColorB);
                         Debug.DrawLine(transform.position, firstVisible.transform.position, debugColor);
                     }
                 }
                 else
                 {
-                    sectorSenses[sectorIdx] = 0;
-                    if (senseAngles)
-                    {
-                        sectorSenses[numSectors + sectorIdx] = 0;
-                    }
+                    sectorSenses[sectorIdx * SensesPerSector + 0] = 0;
+                    sectorSenses[sectorIdx * SensesPerSector + 1] = 0;
+                    sectorSenses[sectorIdx * SensesPerSector + 2] = 0;
+                    //sectorSenses[sectorIdx] = 0;
+                    //if (senseAngles)
+                    //{
+                    //    sectorSenses[numSectors + sectorIdx] = 0;
+                    //}
                 }
             }
         }
