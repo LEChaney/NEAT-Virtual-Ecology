@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,31 @@ public class AttributesController : MonoBehaviour
 
     private List<Water> overlappedWaterTiles;
 
-    public float Energy { get; private set; }
-    public float Hydration { get; private set; }
+    private float energy;
+    private float hydration;
+
+    public float Energy 
+    { 
+        get
+        {
+            return energy;
+        }
+        private set
+        {
+            energy = Mathf.Clamp(value, 0, maxEnergy);
+        }
+    }
+    public float Hydration 
+    { 
+        get
+        {
+            return hydration;
+        }
+        private set
+        {
+            hydration = Mathf.Clamp(value, 0, maxHydration);
+        } 
+    }
     public bool Alive { get; private set; }
 
     // Fitness evaluation properties.
@@ -91,8 +115,6 @@ public class AttributesController : MonoBehaviour
         if (overlappedWaterTiles.Count > 0)
         {
             Hydration += overlappedWaterTiles[0].Take(drinkRate * Time.fixedDeltaTime);
-            
-            Hydration = Mathf.Clamp(Hydration, 0, maxHydration);
         }
 
         // Update visual indicators
@@ -130,6 +152,25 @@ public class AttributesController : MonoBehaviour
         {
             overlappedWaterTiles.Add(other.GetComponent<Water>());
         }
+        if (other.tag == foodTag)
+        {
+            EatFood(other);
+        }
+    }
+
+    private void EatFood(Collider foodCollider)
+    {
+        if (foodTag == "Prey")
+        {
+            var other = foodCollider.gameObject.GetComponent<AttributesController>();
+            other.Kill();
+            Energy += other.foodValue;
+        }
+        else
+        {
+            var food = foodCollider.gameObject.GetComponent<Food>();
+            Energy += food.eat();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -140,18 +181,10 @@ public class AttributesController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == foodTag)
+        Collider collider = collision.collider;
+        if (collider.tag == foodTag)
         {
-            if (foodTag == "Prey")
-            {
-                var other = collision.gameObject.GetComponent<AttributesController>();
-                other.Kill();
-                Energy = Mathf.Clamp(Energy + other.foodValue, 0, maxEnergy);
-            }
-            else
-            {
-                // TODO: Handle rabbit food
-            }
+            EatFood(collider);
         }
     }
 

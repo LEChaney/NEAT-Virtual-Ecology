@@ -1,0 +1,223 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5875246232863834952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5875246232863834956}
+  - component: {fileID: 5875246232863834957}
+  - component: {fileID: 5875246232863834954}
+  - component: {fileID: 5875246232863834955}
+  - component: {fileID: 5875246232863834959}
+  - component: {fileID: 5875246232863834958}
+  - component: {fileID: 7657777608956469548}
+  - component: {fileID: 4268217573284236141}
+  - component: {fileID: 4200140826069889955}
+  - component: {fileID: 8678247285722614961}
+  m_Layer: 10
+  m_Name: HungryFox
+  m_TagString: Predator
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5875246232863834956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 500, y: 0.35, z: -500}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1.1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5875246232863834957
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5875246232863834954
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 42c8ecb592054dd479e960cd6c27f286, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &5875246232863834955
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Material: {fileID: 13400000, guid: 9c1600b8569bfde4b985dbc7053f8182, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5875246232863834959
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5875246232863834958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc290b612bddb8a4687a5fbead11b6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 16.666
+  swimSpeed: 2
+  acceleration: 8
+  turnSpeed: 5
+  slideRatioMin: 0.2
+  slideRatioMax: 1
+  senseSpeed: 1
+  senseSwimming: 0
+--- !u!114 &7657777608956469548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4e9eca7d8276a49b74cf2a88b8a493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 100
+    height: 100
+--- !u!114 &4268217573284236141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSectors: 10
+  fov: 180
+  range: 100
+  sensitiveTag: Prey
+  updateInterval: 0.1
+  displayDebug: 0
+  senseAngles: 1
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 2855
+--- !u!114 &4200140826069889955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03bb740029009f4cb07847980b86102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needsFood: 1
+  needsWater: 0
+  maxEnergy: 100
+  maxHydration: 100
+  energyBaseTickDownRate: 3
+  hydrationBaseTickDownRate: 3
+  energyMovementTickDownModifier: 2
+  hydrationMovementTickDownModifier: 2
+  drinkRate: 50
+  foodTag: Prey
+  foodValue: 0
+  showAttributeBars: 1
+  attributeBarsPrefab: {fileID: 5724938709217467783, guid: d4808c875a27dd14cb3ca044487616cb,
+    type: 3}
+--- !u!114 &8678247285722614961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875246232863834952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32fe0121dc923f4db9b6f45a9af1a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSensors: 5
+  fov: 180
+  range: 30
+  updateInterval: 0.06
+  displayDebug: 0
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 807

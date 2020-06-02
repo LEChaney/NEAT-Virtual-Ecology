@@ -251,6 +251,16 @@ public class Optimizer : MonoBehaviour {
 
     void OnGUI()
     {
+        if (GUI.Button(new Rect(10 + UIOffset, 10, 100, 40), "Start EA"))
+        {
+            StartEA();
+        }
+
+        if (GUI.Button(new Rect(10 + UIOffset, 60, 100, 40), "Stop EA"))
+        {
+            StopEA();
+        }
+
         if (GUI.Button(new Rect(10 + UIOffset, 110, 100, 40), "Run best"))
         {
             RunBest();
