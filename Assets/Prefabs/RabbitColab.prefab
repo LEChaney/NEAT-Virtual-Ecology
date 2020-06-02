@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: 2849612364497641318}
   - component: {fileID: 4541383739028267139}
   - component: {fileID: -4593141884183660645}
-  - component: {fileID: 6520065657754170283}
+  - component: {fileID: -3207969903021617612}
+  - component: {fileID: 5483997928112928073}
   m_Layer: 11
-  m_Name: HungryRabbit
+  m_Name: RabbitColab
   m_TagString: Prey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,11 +132,11 @@ MonoBehaviour:
   moveSpeed: 16.666
   swimSpeed: 2
   acceleration: 8
-  turnSpeed: 10
+  turnSpeed: 5
   slideRatioMin: 0.2
   slideRatioMax: 1
   senseSpeed: 1
-  senseSwimming: 1
+  senseSwimming: 0
 --- !u!114 &3672564163127852389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,11 +192,11 @@ MonoBehaviour:
   needsWater: 0
   maxEnergy: 100
   maxHydration: 100
-  energyBaseTickDownRate: 3
+  energyBaseTickDownRate: 2
   hydrationBaseTickDownRate: 3
   energyMovementTickDownModifier: 2
   hydrationMovementTickDownModifier: 2
-  drinkRate: 10
+  drinkRate: 50
   foodTag: RabbitFood
   foodValue: 50
   showAttributeBars: 1
@@ -221,7 +222,7 @@ MonoBehaviour:
   blocksLineOfSight:
     serializedVersion: 2
     m_Bits: 807
---- !u!114 &6520065657754170283
+--- !u!114 &-3207969903021617612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,10 +235,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numSectors: 5
+  fov: 360
+  range: 30
+  sensitiveTag: Prey
+  updateInterval: 0.1
+  displayDebug: 0
+  blocksLineOfSight:
+    serializedVersion: 2
+    m_Bits: 2855
+--- !u!114 &5483997928112928073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205943075977578395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da3ddf892b1e34f8b51891d3adba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numSectors: 10
   fov: 180
   range: 30
   sensitiveTag: RabbitFood
-  updateInterval: 0.25
+  updateInterval: 0.1
   displayDebug: 0
   blocksLineOfSight:
     serializedVersion: 2

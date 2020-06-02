@@ -167,11 +167,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numSectors: 10
   fov: 180
-  range: 100
+  range: 30
   sensitiveTag: Prey
   updateInterval: 0.1
   displayDebug: 0
-  senseAngles: 1
   blocksLineOfSight:
     serializedVersion: 2
     m_Bits: 2855

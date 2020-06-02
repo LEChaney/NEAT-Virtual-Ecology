@@ -137,7 +137,7 @@ public class SectorSensor : MonoBehaviour
 
         // Get objects in each sector that are the type of object this sensor is
         // sensitive to.
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, blocksLineOfSight);
         foreach (Collider collider in hitColliders)
         {
             if (collider.tag == sensitiveTag && collider.gameObject != gameObject)
@@ -172,10 +172,10 @@ public class SectorSensor : MonoBehaviour
                     firstVisible = obj;
                     break;
                 }
-                else if (displayDebug)
-                {
-                    Debug.DrawLine(transform.position, obj.transform.position, Color.magenta);
-                }
+                //else if (displayDebug)
+                //{
+                //    Debug.DrawLine(transform.position, obj.transform.position, Color.magenta);
+                //}
             }
         }
         return firstVisible;
