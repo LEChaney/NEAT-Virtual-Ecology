@@ -128,6 +128,12 @@ public class Optimizer : MonoBehaviour {
         Time.timeScale = timeScale;       
         _ea.StartContinue();
         EARunning = true;
+
+        StreamWriter writer = new StreamWriter(SaveFileName+"_testResults.csv", true);
+        writer.WriteLine();
+        writer.WriteLine("Started");
+        writer.WriteLine("Generation,Max Fitness,Mean Fitness");
+        writer.Close();
     }
 
     void ea_UpdateEvent(object sender, EventArgs e)
@@ -138,6 +144,9 @@ public class Optimizer : MonoBehaviour {
         Fitness = _ea.Statistics._maxFitness;
         Generation = _ea.CurrentGeneration;
       
+        StreamWriter writer = new StreamWriter(SaveFileName+"_testResults.csv", true);
+        writer.WriteLine(Generation + "," + _ea.Statistics._maxFitness + "," + _ea.Statistics._meanFitness);
+        writer.Close();
 
     //    Utility.Log(string.Format("Moving average: {0}, N: {1}", _ea.Statistics._bestFitnessMA.Mean, _ea.Statistics._bestFitnessMA.Length));
 
