@@ -92,7 +92,7 @@ public class Optimizer : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (_ea.CurrentGeneration == stopGeneration)
+        if (_ea != null && _ea.CurrentGeneration == stopGeneration)
         {
             StopEA();
         }
