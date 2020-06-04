@@ -14,6 +14,7 @@ public class Optimizer : MonoBehaviour {
     public float timeScale = 20;
     public int populationSize = 50;
     public int speciesCount = 10;
+    public int stopGeneration = 100;
     private int numInputs;
 
     public int Trials;
@@ -88,6 +89,14 @@ public class Optimizer : MonoBehaviour {
 
         print(champFileSavePath);
 	}
+
+    private void FixedUpdate()
+    {
+        if (_ea.CurrentGeneration == stopGeneration)
+        {
+            StopEA();
+        }
+    }
 
     // Update is called once per frame
     void Update()
